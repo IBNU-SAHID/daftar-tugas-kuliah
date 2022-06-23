@@ -32,10 +32,10 @@ public class ControllerModelTugas {
         return modelAndView;
     }
 
-    @PostMapping("/todo")
+    @PostMapping("/tugas")
     public String createTodoItem(@Valid ModelTugas modelTugas, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-todo-item";
+            return "tambah-tugas-baru";
         }
 
 
@@ -43,11 +43,11 @@ public class ControllerModelTugas {
         return "redirect:/";
     }
 
-    @PostMapping("/todo/{id}")
+    @PostMapping("/tugas/{id}")
     public String updateTodoItem(@PathVariable("id") long id, @Valid ModelTugas modelTugas, BindingResult result, Model model) {
         if (result.hasErrors()) {
             modelTugas.setId(id);
-            return "update-todo-item";
+            return "update-tugas";
         }
 
         repositoryTugas.save(modelTugas);

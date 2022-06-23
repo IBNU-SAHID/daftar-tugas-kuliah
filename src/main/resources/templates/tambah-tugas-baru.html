@@ -13,7 +13,7 @@
     <div class="container">
         <div class="col-md-6 mt-5 ">
             <h1>Tambahkan Tugas Baru</h1>
-            <form action="#" th:action="@{/todo}" th:object="${modelTugas}" method="POST">
+            <form action="#" th:action="@{/tugas}" th:object="${modelTugas}" method="POST">
                 <div class="form-group">
                     <label for="tugask">Tugas Baru</label>
                     <input class="form-control" type="text" th:field="*{tugas}" id="tugask"

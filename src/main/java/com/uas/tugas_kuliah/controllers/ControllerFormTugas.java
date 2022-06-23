@@ -13,28 +13,28 @@ public class ControllerFormTugas {
     @Autowired
     private RepositoryTugas repositoryTugas;
 
-    @GetMapping("/create-todo")
+    @GetMapping("/tambahkan-tugas")
     public String showCreateForm(ModelTugas modelTugas){
-        return "add-todo-item";
+        return "tambah-tugas-baru";
     }
 
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         ModelTugas modelTugas = repositoryTugas
                 .findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("TodoItem id: " + id + " not found"));
+                .orElseThrow(() -> new IllegalArgumentException("id tugas : " + id + " tidak ditemukan"));
 
-        model.addAttribute("todo", modelTugas);
-        return "update-todo-item";
+        model.addAttribute("edt_tugas", modelTugas);
+        return "update-tugas";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteTodoItem(@PathVariable("id") long id, Model model) {
-        ModelTugas todoItem = repositoryTugas
+        ModelTugas modelTugas = repositoryTugas
                 .findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("TodoItem id: " + id + " not found"));
+                .orElseThrow(() -> new IllegalArgumentException("id tugas : " + id + " tidak ditemukan"));
 
-        repositoryTugas.delete(todoItem);
+        repositoryTugas.delete(modelTugas);
         return "redirect:/";
     }
 
