@@ -22,13 +22,6 @@ public class DataLoaderModelTugas implements CommandLineRunner {
     }
 
     private void loadSeedData() {
-        if (todoItemRepository.count() == 0) {
-            ModelTugas model1 = new ModelTugas("sistem basis data : buat video penjelasan");
-            ModelTugas model2 = new ModelTugas("Metode Numerik   : Presentasi ulang");
-
-            todoItemRepository.save(model1);
-            todoItemRepository.save(model2);
-        }
         logger.info("jumlah tugas yang tersedia : {}", todoItemRepository.count());
     }
 
